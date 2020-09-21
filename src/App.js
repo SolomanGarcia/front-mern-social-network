@@ -2,7 +2,7 @@ import React from "react";
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <h1>React FrontEnd</h1>
     </div>
   );
