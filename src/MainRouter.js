@@ -2,12 +2,12 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./core/Home";
 
-const MainRouter = () => {
+const MainRouter = () => (
   <div>
     <Switch>
       <Route path="/" component={Home} />
     </Switch>
-  </div>;
-};
+  </div>
+);
 
 export default MainRouter;
