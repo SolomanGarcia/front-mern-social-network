@@ -43,7 +43,7 @@ const Menu = ({ history }) => (
         <>
           <li className="nav-item">
             <a
-              href
+              href="true"
               className="nav-link"
               style={
                 (isActive(history, "/signup"),
@@ -56,7 +56,7 @@ const Menu = ({ history }) => (
           </li>
 
           <li className="nav-item">
-            <a href className="nav-link">
+            <a href="true" className="nav-link">
               {isAuthenticated().user.name}
             </a>
           </li>
