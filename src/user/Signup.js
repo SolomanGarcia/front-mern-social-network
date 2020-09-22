@@ -16,6 +16,17 @@ class Signup extends Component {
     this.setState({ [name]: event.target.value });
   };
 
+  clickSubmit = (event) => {
+    event.preventDefault();
+    const { name, email, password } = this.state;
+    const user = {
+      name,
+      email,
+      password
+    };
+    console.log(user);
+  };
+
   render() {
     const { name, email, password } = this.state;
     return (
@@ -50,7 +61,12 @@ class Signup extends Component {
               value={password}
             />
           </div>
-          <button className="btn btn-raised btn-primary">Submit</button>
+          <button
+            onClick={this.clickSubmit}
+            className="btn btn-raised btn-primary"
+          >
+            Submit
+          </button>
         </form>
       </div>
     );
