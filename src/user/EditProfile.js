@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { isAuthenticated } from "../auth";
 import { read, update } from "./apiUser";
+import DefaultProfile from "../images/avatar.jpg";
 
 class EditProfile extends Component {
   constructor() {
@@ -142,6 +143,10 @@ class EditProfile extends Component {
       return <Redirect to={`/user/${id}`} />;
     }
 
+    const photoUrl = id
+      ? `${process.env.REACT_APP_API_URL}/user/photo/${id}`
+      : DefaultProfile;
+
     return (
       <div className="container">
         <h2 className="mt-5 mb 5">Edit Profile</h2>
@@ -159,6 +164,8 @@ class EditProfile extends Component {
         ) : (
           ""
         )}
+
+        <img src={photoUrl} alt={name} />
 
         {this.signupForm(name, email, password)}
       </div>
