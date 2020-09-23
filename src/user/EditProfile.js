@@ -15,7 +15,8 @@ class EditProfile extends Component {
       redirectToProfile: false,
       error: "",
       fileSize: 0,
-      loading: false
+      loading: false,
+      about: ""
     };
   }
 
@@ -25,7 +26,13 @@ class EditProfile extends Component {
       if (data.error) {
         this.setState({ redirectToProfile: true });
       } else {
-        this.setState({ id: data._id, name: data.name, email: data.email });
+        this.setState({
+          id: data._id,
+          name: data.name,
+          email: data.email,
+          error: "",
+          about: data.about
+        });
       }
     });
   };
@@ -84,7 +91,7 @@ class EditProfile extends Component {
     }
   };
 
-  signupForm = (name, email, password) => (
+  signupForm = (name, email, password, about) => (
     <form>
       <div className="form-group">
         <label className="text-muted">Profile Photo</label>
@@ -114,6 +121,15 @@ class EditProfile extends Component {
         />
       </div>
       <div className="form-group">
+        <label className="text-muted">About</label>
+        <textarea
+          onChange={this.handleChange("about")}
+          type="text"
+          className="form-control"
+          value={about}
+        />
+      </div>
+      <div className="form-group">
         <label className="text-muted">Password</label>
         <input
           onChange={this.handleChange("password")}
@@ -136,7 +152,8 @@ class EditProfile extends Component {
       password,
       redirectToProfile,
       error,
-      loading
+      loading,
+      about
     } = this.state;
 
     if (redirectToProfile) {
@@ -168,14 +185,14 @@ class EditProfile extends Component {
         )}
 
         <img
-          style={{ height: "200px", width: "auto", borderRadius: "50%" }}
+          style={{ height: "200px", width: "auto" }}
           className="img-thumbnail"
           src={photoUrl}
           onError={(i) => (i.target.src = `${DefaultProfile}`)}
           alt={name}
         />
 
-        {this.signupForm(name, email, password)}
+        {this.signupForm(name, email, password, about)}
       </div>
     );
   }

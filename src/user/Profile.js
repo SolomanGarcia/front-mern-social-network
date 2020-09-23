@@ -51,7 +51,7 @@ class Profile extends Component {
         <div className="row">
           <div className="col-md-6">
             <img
-              style={{ height: "200px", width: "auto", borderRadius: "50%" }}
+              style={{ height: "200px", width: "auto" }}
               className="img-thumbnail"
               src={photoUrl}
               onError={(i) => (i.target.src = `${DefaultProfile}`)}
@@ -75,6 +75,13 @@ class Profile extends Component {
                 <DeleteUser userId={user._id} />
               </div>
             )}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col md-12 mt-5 mb-5">
+            <hr />
+            <p className="lead">{user.about}</p>
+            <hr />
           </div>
         </div>
       </div>
