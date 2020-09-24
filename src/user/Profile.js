@@ -4,6 +4,7 @@ import { isAuthenticated } from "../auth";
 import { read } from "./apiUser";
 import DefaultProfile from "../images/avatar.jpg";
 import DeleteUser from "./DeleteUser";
+import FollowProfileButton from "./FollowProfileButton";
 
 class Profile extends Component {
   constructor() {
@@ -64,7 +65,9 @@ class Profile extends Component {
               <p>Email: {user.email}</p>
               <p>{`Joined ${new Date(user.created).toDateString()}`}</p>
             </div>
-            {isAuthenticated().user && isAuthenticated().user._id === user._id && (
+
+            {isAuthenticated().user &&
+            isAuthenticated().user._id === user._id ? (
               <div className="d-inline-block">
                 <Link
                   className="btn btn-raised btn-success mr-5"
@@ -74,6 +77,8 @@ class Profile extends Component {
                 </Link>
                 <DeleteUser userId={user._id} />
               </div>
+            ) : (
+              <FollowProfileButton />
             )}
           </div>
         </div>
