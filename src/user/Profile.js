@@ -109,12 +109,6 @@ class Profile extends Component {
                 onButtonClick={this.clickFollowButton}
               />
             )}
-            <hr />
-
-            <ProfileTabs
-              followers={user.followers}
-              following={user.following}
-            />
           </div>
         </div>
         <div className="row">
@@ -122,6 +116,11 @@ class Profile extends Component {
             <hr />
             <p className="lead">{user.about}</p>
             <hr />
+
+            <ProfileTabs
+              followers={user.followers}
+              following={user.following}
+            />
           </div>
         </div>
       </div>
