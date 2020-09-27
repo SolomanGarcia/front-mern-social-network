@@ -28,7 +28,7 @@ class Posts extends Component {
           const posterId = post.postedBy
             ? `/user/${post.postedBy._id}`
             : " Unknown";
-          const posterName = post.postedBy ? post.postedBy.name : "";
+          const posterName = post.postedBy ? post.postedBy.name : "Unknown";
 
           return (
             <div className="card col-md-4" key={i}>
