@@ -6,7 +6,7 @@ import DefaultProfile from "../images/avatar.jpg";
 import DeleteUser from "./DeleteUser";
 import FollowProfileButton from "./FollowProfileButton";
 import ProfileTabs from "./ProfileTabs";
-import { listByUser, ListByUser } from "../post/apiPost";
+import { listByUser } from "../post/apiPost";
 
 class Profile extends Component {
   constructor() {
@@ -16,7 +16,7 @@ class Profile extends Component {
       redirectToSignin: false,
       following: false,
       error: "",
-      post: []
+      posts: []
     };
   }
 
@@ -91,7 +91,7 @@ class Profile extends Component {
       <div className="container">
         <h2 className="mt-5 mb-5">Profile</h2>
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-4">
             <img
               style={{ height: "200px", width: "auto" }}
               className="img-thumbnail"
@@ -100,7 +100,7 @@ class Profile extends Component {
               alt={user.name}
             />
           </div>
-          <div className="col-md-6">
+          <div className="col-md-8">
             <div className="lead mt-2">
               <p>Hello {user.name}</p>
               <p>Email: {user.email}</p>
@@ -110,11 +110,18 @@ class Profile extends Component {
             isAuthenticated().user._id === user._id ? (
               <div className="d-inline-block">
                 <Link
+                  className="btn btn-raised btn-info mr-5"
+                  to={`/post/create`}
+                >
+                  Create Post
+                </Link>
+                <Link
                   className="btn btn-raised btn-success mr-5"
                   to={`/user/edit/${user._id}`}
                 >
                   Edit Profile
                 </Link>
+
                 <DeleteUser userId={user._id} />
               </div>
             ) : (
