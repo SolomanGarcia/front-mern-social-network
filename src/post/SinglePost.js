@@ -7,7 +7,7 @@ import { isAuthenticated } from "../auth";
 class SinglePost extends Component {
   state = {
     post: "",
-    ridirectToHome: false
+    redirectToHome: false
   };
 
   componentDidMount = () => {
@@ -33,8 +33,15 @@ class SinglePost extends Component {
     });
   };
 
+  deleteConfirmed = () => {
+    let answer = window.confirm("Are you sure you want to delete your post?");
+    if (answer) {
+      this.deletePost();
+    }
+  };
+
   renderPost = (post) => {
-    const posterId = post.postedBy ? `/user/${post.postedBy._id}` : " Unknown";
+    const posterId = post.postedBy ? `/user/${post.postedBy._id}` : "";
     const posterName = post.postedBy ? post.postedBy.name : "Unknown";
     return (
       <div className="card-body">
@@ -62,7 +69,7 @@ class SinglePost extends Component {
                   Update Post
                 </button>
                 <button
-                  onClick={this.deletePost}
+                  onClick={this.deleteConfirmed}
                   className="btn btn-raised btn-danger"
                 >
                   Delete Post
@@ -76,7 +83,7 @@ class SinglePost extends Component {
 
   render() {
     if (this.state.redirectToHome) {
-      return <Redirect to={`/user/${id}`} />;
+      return <Redirect to={`/`} />;
     }
 
     const { post } = this.state;
