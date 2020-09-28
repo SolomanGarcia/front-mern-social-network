@@ -50,7 +50,7 @@ class Comment extends Component {
           </div>
         </form>
 
-        <div className="col-md-8 col-md-offset-2">
+        <div className="col-md-12">
           <h3 className="text-primary">{comments.length} Comments</h3>
           <hr />
           {comments.map((comment, i) => (
