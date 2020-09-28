@@ -61,7 +61,6 @@ class NewPost extends Component {
             loading: false,
             title: "",
             body: "",
-            photo: "",
             redirectToProfile: true
           });
         }
