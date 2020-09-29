@@ -71,7 +71,7 @@ class NewPost extends Component {
   newPostForm = (title, body) => (
     <form>
       <div className="form-group">
-        <label className="text-muted">Profile Photo</label>
+        <label className="text-muted">Post Photo</label>
         <input
           onChange={this.handleChange("photo")}
           type="file"
@@ -106,7 +106,15 @@ class NewPost extends Component {
   );
 
   render() {
-    const { title, body, user, error, loading, redirectToProfile } = this.state;
+    const {
+      title,
+      body,
+      photo,
+      user,
+      error,
+      loading,
+      redirectToProfile
+    } = this.state;
 
     if (redirectToProfile) {
       return <Redirect to={`/user/${user._id}`} />;
