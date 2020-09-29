@@ -13,6 +13,7 @@ class EditPost extends Component {
       body: "",
       redirectToProfile: false,
       error: "",
+      fileSize: 0,
       loading: false
     };
   }
@@ -23,11 +24,10 @@ class EditPost extends Component {
         this.setState({ redirectToProfile: true });
       } else {
         this.setState({
-          id: data._id,
+          id: data.postedBy._id,
           title: data.title,
           body: data.body,
-          error: "",
-          fileSize: 0
+          error: ""
         });
       }
     });
@@ -66,7 +66,7 @@ class EditPost extends Component {
     this.setState({ loading: true });
 
     if (this.isValid()) {
-      const postId = this.state.id;
+      const postId = this.props.match.params.postId;
       const token = isAuthenticated().token;
 
       update(postId, token, this.postData).then((data) => {
@@ -149,7 +149,9 @@ class EditPost extends Component {
         <img
           style={{ height: "200px", width: "auto" }}
           className="img-thumbnail"
-          src={`${process.env.REACT_APP_API_URL}/post/photo/${id}}`}
+          src={`${
+            process.env.REACT_APP_API_URL
+          }/post/photo/${id}?${new Date().getTime()}`}
           onError={(i) => (i.target.src = `${DefaultPost}`)}
           alt={title}
         />
